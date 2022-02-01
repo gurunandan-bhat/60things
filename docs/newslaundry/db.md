@@ -19,33 +19,31 @@
 
  In the context of technology each aspect means:
 
-Bring Together
-: First and most importantly, we must provide a single UI to users -
-  what, in jargon is an /extensible/, published Service API that both
-  humans (sometimes) and applications (mostly) can use to query and
-  discover relations. Second it requires us to do a complete sweep of
-  all data sources some in plain sight, some hidden in users personal
-  spreadsheets and lists. While this does automatically imply the need
-  to store all data in a single location and technology stack (a
-  database), doing so has profound positive implications for the
-  second aspect of consolidating, which is;
+**Bring Together:** First and most importantly, we must provide a
+single UI to users - what, in jargon is an /extensible/, published
+Service API that both humans (sometimes) and applications (mostly) can
+use to query and discover relations. Second it requires us to do a
+complete sweep of all data sources some in plain sight, some hidden in
+users personal spreadsheets and lists. While this does automatically
+imply the need to store all data in a single location and technology
+stack (a database), doing so has profound positive implications for
+the second aspect of consolidating, which is;
  
-Make Firm
-: A "firm" Datastore is one that is organized to reflect a business'
-  activity, and one that scales nicely with time and success. Be sure
-  that your data will grow exponentially - both in volume (more users,
-  more content) and in variety (newer products, newer relationships
-  between products and consumers, newer patterns of consumption, newer
-  transactions etc.) A simple test of a good data store is one where
-  every new innovation can be recorded simply as a new row in some
-  table. An "in-firm" store is one where every new pattern requires
-  designing a new table or adding a new column in an already
-  overloaded table. A firm data store requires well defined access
-  controls that can toggled quickly. A firm data store can be easily
-  backed up, the back-up tested periodically and restored quickly
-  after a disaster. All these aspets become hugely easier when we use
-  a single technology stack for storing, accessing and managing the
-  data store.
+**Make Firm:**: A "firm" Datastore is one that is organized to reflect
+a business' activity, and one that scales nicely with time and
+success. Be sure that your data will grow exponentially - both in
+volume (more users, more content) and in variety (newer products,
+newer relationships between products and consumers, newer patterns of
+consumption, newer transactions etc.) A simple test of a good data
+store is one where every new innovation can be recorded simply as a
+new row in some table. An "in-firm" store is one where every new
+pattern requires designing a new table or adding a new column in an
+already overloaded table. A firm data store requires well defined
+access controls that can toggled quickly. A firm data store can be
+easily backed up, the back-up tested periodically and restored quickly
+after a disaster. All these aspets become hugely easier when we use a
+single technology stack for storing, accessing and managing the data
+store.
 
 ## How might one Consolidate 
 
@@ -125,4 +123,40 @@ the Role master which can be reviewed.
 
 ### Assets
 
-This should be a list of every offering you have.  
+This should be a list of every offering you have with every atribute
+that is *uniquely* and *permanently* (in the long-term) associated
+with it. Identifying these requires a sweep of your assets and an easy
+way to start is to list categories of assets (asset type:
+e.g. content: possibly further divided into text, audio and video,
+merchandize etc.) first and then do a sweep per category. The critical
+step here is identifying the unique and long-term attributes of an
+asset. We can do a trial list and then sharpen it as we develop.
+
+### People <=> Asset Relations
+
+This a set of tables that will necessarily vary with time rapidly or
+slowly depending on how transient the relationship is. Once the People
+and Asset tables are identified, identifying relationships becomes
+simpler. The most important question to ask when capturing
+relationships is this: If this relationship changes, will I have to
+add a new column to the table (or modify the schema) or merely create
+a new row or update/delete an existing row? A good table design always
+leads to merely adding or updating a row, never modifying the table or
+the schema.
+
+### Real-time Metrics
+
+This is a whole separate category of tables whose core purpose is
+encapsulating Business Intelligence. It is best to usually collect it
+in a dynamic TSD (Time-series Database) and then move it to more
+static conventional store at some regular interval usually at midnight
+of each day. We shall have something to add to this later. For now we
+should just leave a task marker to indicate a near-future TODO.
+
+## Reviewing the Current Schema
+
+A good starting point is to review the database created to serve the
+mobile app under development and see what modifications might improve
+it (if at all):
+
+
